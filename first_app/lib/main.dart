@@ -14,7 +14,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
-  void _ansewerQuestion() {
+  var _totalScore = 0;
+  void _ansewerQuestion(int score) {
+    _totalScore += score;
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
@@ -23,19 +25,38 @@ class _MyAppState extends State<MyApp> {
   static const _questionList = [
     {
       'questionText': 'What\'s your favourate color ?',
-      'answers': ['Blue', 'Red', 'Yellow', 'Green'],
+      'answers': [
+        {'text': 'Blue', 'score': 10},
+        {'text': 'Red', 'score': 1},
+        {'text': 'Yellow', 'score': 3},
+        {'text': 'Green', 'score': 6}
+      ],
     },
     {
       'questionText': 'What\'s your name ?',
-      'answers': ['Swopnil', 'Swopnil Shahi', 'Yellow', 'Green'],
+      'answers': [
+        {'text': 'Swopnil', 'score': 4},
+        {'text': 'SwopnilShahi', 'score': 4},
+        {'text': 'Yellow', 'score': 4},
+        {'text': 'Green', 'score': 4}
+      ],
     },
     {
       'questionText': 'What\'s your favourate movie ?',
-      'answers': ['Blue', 'jay Nepal', 'Yellow'],
+      'answers': [
+        {'text': 'Blue', 'score': 4},
+        {'text': 'jayNepal', 'score': 4},
+        {'text': 'Yellow', 'score': 4}
+      ],
     },
     {
       'questionText': 'What\'s your favourate city ?',
-      'answers': ['achham', 'kathmandu', 'Yellow', 'Green'],
+      'answers': [
+        {'text': 'achham', 'score': 23},
+        {'text': 'kathmandu', 'score': 5},
+        {'text': 'Yellow', 'score': 6},
+        {'text': 'Green', 'score': 5}
+      ],
     },
   ];
   @override
@@ -51,6 +72,6 @@ class _MyAppState extends State<MyApp> {
                     questionList: _questionList,
                     questionIndex: _questionIndex,
                     ansewerQuestion: _ansewerQuestion)
-                : Result()));
+                : Result(_totalScore)));
   }
 }
