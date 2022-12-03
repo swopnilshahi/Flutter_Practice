@@ -15,6 +15,14 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
   var _totalScore = 0;
+
+  void resetApp(){
+    setState(() {
+       _questionIndex = 0;
+       _totalScore = 0;
+
+    });
+  }
   void _ansewerQuestion(int score) {
     _totalScore += score;
     setState(() {
@@ -72,6 +80,6 @@ class _MyAppState extends State<MyApp> {
                     questionList: _questionList,
                     questionIndex: _questionIndex,
                     ansewerQuestion: _ansewerQuestion)
-                : Result(_totalScore)));
+                : Result(_totalScore,resetApp)));
   }
 }
